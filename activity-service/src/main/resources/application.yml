@@ -1,0 +1,33 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: activity-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/fitness-activity-db
+    username: root
+    password: Jan$2016my$ql
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+rabbitmq:
+  exchange:
+    name: fitness.exchange
+  queue:
+      name: activity.queue
+  routing:
+      key: activity.tracking
