@@ -10,6 +10,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -47,5 +49,12 @@ public class UserService {
 
     public boolean existsById(Long userId) {
         return userRepository.existsById(userId);
+    }
+
+    public List<UserResponse> getUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(this::mapToUserResponse)
+                .toList();
     }
 }
