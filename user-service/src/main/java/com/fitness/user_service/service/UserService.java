@@ -20,7 +20,9 @@ public class UserService {
 
     public UserResponse registerUser(RegisterRequest userRequest) {
         if (userRepository.existsByEmail(userRequest.getEmail())) {
-            throw new RuntimeException("Email already in use");
+//            throw new RuntimeException("Email already in use");
+            User savedUser = this.userRepository.findByEmail(userRequest.getEmail());
+            return mapToUserResponse(savedUser);
         }
         User user = mapToUser(userRequest);
         User savedUser = this.userRepository.save(user);
@@ -47,8 +49,8 @@ public class UserService {
 
     }
 
-    public boolean existsById(Long userId) {
-        return userRepository.existsById(userId);
+    public boolean existsById(String userId) {
+        return userRepository.existsByKeycloakId(userId);
     }
 
     public List<UserResponse> getUsers() {

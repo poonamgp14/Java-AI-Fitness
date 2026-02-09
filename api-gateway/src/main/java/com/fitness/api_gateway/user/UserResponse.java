@@ -1,9 +1,7 @@
-package com.fitness.user_service.dto;
+package com.fitness.api_gateway.user;
 
-import com.fitness.user_service.model.UserRole;
+import com.fitness.api_gateway.user.UserRole;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 

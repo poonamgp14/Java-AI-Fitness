@@ -1,6 +1,11 @@
 server:
   port: 8090
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://127.0.0.1:8181/realms/fitness-java-app/protocol/openid-connect/certs
   cloud:
     gateway:
       routes:
