@@ -14,7 +14,7 @@ import java.util.Map;
 @Data
 public class ActivityResponse {
     private Long id;
-    private Long userId;
+    private String userId;
     private ActivityType type;
     private Integer duration;
     private Integer caloriesBurned;

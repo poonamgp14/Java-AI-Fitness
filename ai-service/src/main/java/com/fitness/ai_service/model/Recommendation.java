@@ -1,7 +1,10 @@
 package com.fitness.ai_service.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,12 +15,15 @@ import java.util.Map;
 
 @Builder
 @Entity(name="recommendations")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Recommendation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long activityId;
-    private Long userId;
+    private String userId;
     private ActivityType activityType;
 
     @Column(columnDefinition = "TEXT")

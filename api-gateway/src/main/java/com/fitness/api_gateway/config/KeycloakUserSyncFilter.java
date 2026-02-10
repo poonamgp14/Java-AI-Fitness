@@ -25,6 +25,7 @@ public class KeycloakUserSyncFilter implements WebFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+        log.info("----------------------------------------------");
         String token = exchange.getRequest().getHeaders().getFirst("Authorization");
         String userPath = exchange.getRequest().getURI().getPath();
         UriTemplate uriTemplate = new UriTemplate("/users/{userId}");

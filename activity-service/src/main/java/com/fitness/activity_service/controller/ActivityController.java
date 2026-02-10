@@ -18,13 +18,18 @@ public class ActivityController {
     private ActivityService activityService;
 
     @PostMapping
-    public ResponseEntity<ActivityResponse> trackActivity(@RequestBody ActivityRequest activityRequest) {
+    public ResponseEntity<ActivityResponse> trackActivity(@RequestBody ActivityRequest activityRequest, @RequestHeader("X-User-ID") String userId) {
+        if (userId != null) {
+            activityRequest.setUserId(userId);
+        }
         return ResponseEntity.ok(activityService.trackActivity(activityRequest));
     }
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<ActivityResponse>> getActivitiesByUserId(@PathVariable Long userId) {
-        return ResponseEntity.ok(activityService.getActivitiesByUserId(userId));
+
+    @GetMapping
+    public ResponseEntity<List<ActivityResponse>> getActivitiesByUserId(@RequestHeader("X-User-ID") String keycloakId) {
+        return ResponseEntity.ok(activityService.getActivitiesByUserId(keycloakId));
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<ActivityResponse> getActivityById(@PathVariable Long id) {
         return ResponseEntity.ok(activityService.getActivityById(id));

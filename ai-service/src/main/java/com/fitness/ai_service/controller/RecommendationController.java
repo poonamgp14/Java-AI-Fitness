@@ -20,13 +20,15 @@ public class RecommendationController {
     private final RecommendationService recommendationService;
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Recommendation>> getRecommendationsByUserId(@PathVariable Long userId) {
+    public ResponseEntity<List<Recommendation>> getRecommendationsByUserId(@PathVariable String userId) {
         return ResponseEntity.ok(recommendationService.getRecommendationsByUserId(userId));
     }
 
     @GetMapping("/activity/{activityId}")
     public ResponseEntity<Recommendation> getRecommendationsByActivityId(@PathVariable Long activityId) {
         log.info("Fetching recommendations for activityId: {}", activityId);
-        return ResponseEntity.ok(recommendationService.getRecommendationsByActivityId(activityId));
+        Recommendation recom = recommendationService.getRecommendationsByActivityId(activityId);
+        log.info("Fetching recommendations for activityId: {}", recom.getRecommendation());
+        return ResponseEntity.ok(recom);
     }
 }

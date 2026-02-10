@@ -60,7 +60,7 @@ public class ActivityService {
         return mapToActivityResponse(activity);
     }
 
-    public List<ActivityResponse> getActivitiesByUserId(Long userId) {
+    public List<ActivityResponse> getActivitiesByUserId(String userId) {
         List<Activity> activities = trackRepository.findByUserId(userId);
         System.out.println(activities.toArray().length);
         return activities.stream()

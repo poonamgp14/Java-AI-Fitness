@@ -12,7 +12,7 @@ public class UserValidationService {
 
     private final WebClient userServiceWebClient;
 
-    public boolean validateUser(Long userID){
+    public boolean validateUser(String userID){
         try{
             return userServiceWebClient.get()
                     .uri("/users/{userID}/validate", userID)
