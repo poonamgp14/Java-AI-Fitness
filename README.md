@@ -1,11 +1,11 @@
-#AI powered Microservices based Java Fitness APP
+# AI powered Microservices based Java Fitness APP
 Each microservice is regiesterd into Eureka server. API-gateway is the main entrypoint where Keycloak is added as an Identity provider for OAuth2 authorization.
 Configs for different microservices are loaded via a config server.
 Publishing a message to RabbitMQ queue on adding a new fitness activity
 Messgae is consumed by Gemini based AI-service which gets recommendations based on the activity.
 
 
-###Steps
+### Steps
 1. Edit configuration under AI service and set env variables as
 GEMINI_API_KEY=<KEY GOES HERE>;GEMINI_API_URL=<URL GOES HERE>
 2. Run KeyCloak server via Docker
